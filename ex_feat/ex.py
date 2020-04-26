@@ -5,7 +5,7 @@ from torch.autograd import Variable
 import numpy as np
 from torchvision import transforms
 import resnet
-os.environ["CUDA_VISIBLE_DEVICES"] = "3"
+os.environ["CUDA_VISIBLE_DEVICES"] = "1"
 
 batch_size = 1
 ##########   DATASET   ###########
@@ -17,7 +17,7 @@ test_dataset = dataset.videodataset(dataset_dir=img_dir, txt_path='list_test_seq
 test_loader = torch.utils.data.DataLoader(dataset = test_dataset, batch_size=batch_size, shuffle=False, num_workers=1)
 ###########   MODEL   ###########
 
-pretrained = '../weight/resnet50_mars_00499.pth'
+pretrained = '/home/lhy/-/模型论文代码/M3D/ResNet50-2d/resnet50-19c8e357.pth'
 model = resnet.resnet50(pretrained=pretrained, num_classes=625, train=False)
 model.cuda()
 model.eval()
